@@ -1,17 +1,21 @@
 <script lang="ts" >
-	let cliente = "Dhonatan Wesley"
-	import Cabecalho from './components/Cabecalho.svelte';
+	import { onMount }  from 'svelte';
+	import Cabecalho    from './components/Cabecalho.svelte';
 	import ListaProduto from './components/ListaProduto.svelte';
+	
+	/*import {Page, Navbar, List, ListItem} from 'framework7-svelte'; */
+
+	let cliente = 'Dhonatan Wesley'
+	let vFiltro = '';
 
 </script>
 
 <main>
-	<Cabecalho/>
-	
+	<div class="cabecalho">
+		<Cabecalho bind:vFiltroDigitado={vFiltro}/>
+	</div>
 	<div class="listagemproduto">
-
-		<ListaProduto />
-
+		<ListaProduto vFiltro={vFiltro}/>
 	</div>
 
 </main>
@@ -24,6 +28,7 @@
 		--cinza-3: #D1D1D1;
 		--cinza-4: #ECECEC;
 	}	
+	
 	main {
 		position: absolute;
 		width: 100%;
@@ -32,12 +37,19 @@
 		left: 0;
 	}
 
+	.cabecalho{
+        top: 0px;
+        left: 0px;
+        right: 0px;
+	}
+
 	.listagemproduto{
 		margin-top: 20px;
 		align-items: center;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		margin-bottom: 50px;
 	}
 
 </style>
