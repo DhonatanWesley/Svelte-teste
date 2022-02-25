@@ -1,18 +1,15 @@
 <script lang="ts" >
-	import { onMount }  from 'svelte';
 	import Cabecalho    from './components/Cabecalho.svelte';
 	import ListaProduto from './components/ListaProduto.svelte';
 	
-	/*import {Page, Navbar, List, ListItem} from 'framework7-svelte'; */
-
-	let cliente = 'Dhonatan Wesley'
 	let vFiltro = '';
+	let QtdCarrinho = 0;
 
 </script>
 
 <main>
 	<div class="cabecalho">
-		<Cabecalho bind:vFiltroDigitado={vFiltro}/>
+		<Cabecalho bind:vFiltroDigitado={vFiltro} vQtdCarrinho={QtdCarrinho} />
 	</div>
 	<div class="listagemproduto">
 		<ListaProduto vFiltro={vFiltro}/>
@@ -27,6 +24,7 @@
 		--cinza-2: #929292;
 		--cinza-3: #D1D1D1;
 		--cinza-4: #ECECEC;
+		--vermelho: #C61800;
 	}	
 	
 	main {
