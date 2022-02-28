@@ -1,6 +1,7 @@
 <script lang="ts" >
 	import Cabecalho    from './components/Cabecalho.svelte';
 	import ListaProduto from './components/ListaProduto.svelte';
+	import Carrinho     from './components/Carrinho.svelte';
 	
 	let vFiltro = '';
 	let QtdCarrinho = 0;
@@ -14,6 +15,9 @@
 	<div class="listagemproduto">
 		<ListaProduto vFiltro={vFiltro}/>
 	</div>
+
+
+	<Carrinho/>
 
 </main>
 

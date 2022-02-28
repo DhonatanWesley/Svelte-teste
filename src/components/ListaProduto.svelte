@@ -81,11 +81,14 @@
 		justify-content: center;
 		align-items: center;
 		border: 5px;
+		border-radius: 5px;
+		box-shadow: 1px 1px 1px 1px var(--cinza-3);
 	}
 
 	img {
 		width: 150px;
 		height: 150px;
+		margin-top: 5px;
 	}
 
     p {
@@ -95,7 +98,7 @@
 
 	.DadosProduto {
         margin-top: 15px;
-		margin-bottom: 0px;
+		margin-bottom: 10px;
         text-align: center;
     }
 </style>

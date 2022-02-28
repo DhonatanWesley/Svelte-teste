@@ -1,7 +1,9 @@
 <script lang="ts">
     import { createEventDispatcher, onDestroy } from 'svelte';
-    import ProdutoStore from '../stores/ProdutoStore.js';
-    
+    import ProdutoStore from '../stores/ProdutoStore';
+    import { listaItemCarrinho } from '../stores/CarrinhoStore';
+    //import { itemCarrinhoBean } from '../stores/CarrinhoStore';
+
     export let id;
 
     /* Controle Modal */
@@ -35,6 +37,15 @@
             qtdVenda = qtdVenda - 1
         } 
     }
+
+    /* Carrinho */
+    const adicionarCarrinho = () => {
+        
+        let itemCarrinho =  { id: id, quantidade: qtdVenda.toString(), valortotal: valorTotal.toString() }; //new itemCarrinhoBean(id, qtdVenda, valorTotal);
+        $listaItemCarrinho = [...$listaItemCarrinho, itemCarrinho ];
+        close();
+    }
+
 </script>
 
 <svelte:window on:keydown={handle_keydown}/>
@@ -68,7 +79,7 @@
 
 	<div class="rodape">
 		<button class="btnCancelar" on:click={close}>Cancelar</button>
-		<button class="btnAdicionar">Adicionar ao Pedido</button>
+		<button class="btnAdicionar" on:click={adicionarCarrinho}>Adicionar ao Pedido</button>
 	</div>
 </div>
 
@@ -92,7 +103,7 @@
 		overflow: auto;
 		transform: translate(-50%,-50%);
 		padding: 1em;
-		border-radius: 0.2em;
+		border-radius: 0.5em;
 		background: white;
     }
 
