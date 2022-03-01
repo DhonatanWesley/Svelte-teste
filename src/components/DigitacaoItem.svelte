@@ -1,10 +1,10 @@
 <script lang="ts">
     import { createEventDispatcher, onDestroy } from 'svelte';
-    import ProdutoStore from '../stores/ProdutoStore';
-    import { listaItemCarrinho } from '../stores/CarrinhoStore';
-    //import { itemCarrinhoBean } from '../stores/CarrinhoStore';
+    import   ProdutoStore                       from '../stores/ProdutoStore';
+    import { listaItemCarrinho }                from '../stores/CarrinhoStore';
 
     export let id;
+    export let qtdVenda: number = 1;
 
     /* Controle Modal */
     const dispatch = createEventDispatcher();
@@ -26,7 +26,6 @@
 	});
     
     /* Calcula o valor total */
-    let qtdVenda: number = 1;
     $: valorTotal = ( produtos[id].valor * qtdVenda)
 
     function somaQtd(): void{
@@ -40,14 +39,14 @@
 
     /* Carrinho */
     const adicionarCarrinho = () => {
-        
-        let itemCarrinho =  { id: id, quantidade: qtdVenda.toString(), valortotal: valorTotal.toString() }; //new itemCarrinhoBean(id, qtdVenda, valorTotal);
+        let itemCarrinho =  { id: id, quantidade: qtdVenda, valortotal: valorTotal };
         $listaItemCarrinho = [...$listaItemCarrinho, itemCarrinho ];
         close();
     }
 
 </script>
 
+<!-- HTML -->
 <svelte:window on:keydown={handle_keydown}/>
 <div class="modal-background" on:click={close}></div>
 <div class="modal" role="dialog" aria-modal="true" bind:this={modal}>
@@ -78,7 +77,7 @@
 	<hr>
 
 	<div class="rodape">
-		<button class="btnCancelar" on:click={close}>Cancelar</button>
+		<button class="btnCancelar"  on:click={close}>Cancelar</button>
 		<button class="btnAdicionar" on:click={adicionarCarrinho}>Adicionar ao Pedido</button>
 	</div>
 </div>

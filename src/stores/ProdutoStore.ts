@@ -18,4 +18,5 @@ const Produtos = writable([
     {id: '14', codigo: 'DW014', nome: 'Funko Pop Marvel: Doctor Stranger',                        un: 'UN', valor: 172.22,    src: 'https://m.media-amazon.com/images/I/71H82d8IfnL._AC_SL1500_.jpg'}
 ]);
 
+export { Produtos };
 export default Produtos;

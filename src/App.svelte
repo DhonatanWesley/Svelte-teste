@@ -15,10 +15,6 @@
 	<div class="listagemproduto">
 		<ListaProduto vFiltro={vFiltro}/>
 	</div>
-
-
-	<Carrinho/>
-
 </main>
 
 <style>

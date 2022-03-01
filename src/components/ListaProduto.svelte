@@ -2,20 +2,16 @@
 	import { onMount } from 'svelte';
 	import DigitacaoItem from './DigitacaoItem.svelte';
 	import ProdutoStore from '../stores/ProdutoStore.js';
+	import { Produtos } from '../stores/ProdutoStore';
 	
 	export let vFiltro = "";
 	let showModal = false;
 
+	/*
 	let produtos = [];
 
 	ProdutoStore.subscribe(data => {
 		produtos = data;
-	});
-
-	/*
-	onMount(async () => {
-		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=60`);
-		produtos = await res.json();
 	});
 	*/
 
@@ -29,7 +25,7 @@
 </script>
 
 <div class="produtoLista">
-	{#each produtos as produto}
+	{#each $Produtos as produto}
 
 	    {#if  produto.nome.toUpperCase().includes(vFiltro.toUpperCase()) }
 
@@ -53,15 +49,7 @@
 </div>
 
 {#if showModal}
-	<DigitacaoItem on:close="{() => showModal = false}" id = {produtos[id_produto].id} />
-<!--
-	<Modal on:close="{() => showModal = false}">
-		<h2 slot="header">Produto: {produtos[id_produto].codigo}</h2>
-
-		<DigitacaoItem id = {produtos[id_produto].id}/>
-		
-	</Modal>
--->
+	<DigitacaoItem on:close="{() => showModal = false}" id = {id_produto} />
 {/if}
 
 <style>
